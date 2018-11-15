@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="form-group">
+    <div class="col-xl-10">
+      <input [(ngModel)]="filterText" placeholder="Wpisz nazwę..." id="search" type="search" class="form-control">
+    </div>
+    <div class="col-xl-2">
+      <button class="btn btn-primary" (click)="onChange()">Wyszukaj</button>
+    </div>
+  </div>
+
+  <div class="blog-item">
+    <ng-container *ngFor="let blogItem of blogItemList | filter:filterText">
+      <app-blog-item [blogItem]="blogItem"></app-blog-item>
+    </ng-container>
+  </div>
+</div>

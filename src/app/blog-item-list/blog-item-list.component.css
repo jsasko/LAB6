@@ -1,0 +1,8 @@
+.blog-item{
+  margin: 40px 0;
+}
+
+app-blog-item{
+  display: block;
+  margin: 40px 0;
+}
