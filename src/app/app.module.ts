@@ -17,13 +17,16 @@ import { BlogItemTitleComponent } from './blog-item-title/blog-item-title.compon
 import { HttpClientModule } from '@angular/common/http';
 import {BlogService} from "./services/blog.service";
 import { FilterPipe } from './pipes/filter.pipe';
+import { SearchBarComponent } from './search-bar/search-bar.component';
+import { BlogHomeComponent } from './blog-home/blog-home.component';
+import { TestFormatDirective } from './directives/test-format.directive';
 
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'quiz', component: QuizComponent},
   {path: 'contact', component: ContactComponent},
-  {path: 'blog', component: BlogItemListComponent },
+  {path: 'blog', component: BlogHomeComponent },
   // { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -40,7 +43,10 @@ const appRoutes: Routes = [
     BlogItemDetailComponent,
     BlogItemListComponent,
     BlogItemTitleComponent,
-    FilterPipe
+    FilterPipe,
+    SearchBarComponent,
+    BlogHomeComponent,
+    TestFormatDirective
   ],
   imports: [
     BrowserModule,

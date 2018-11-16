@@ -1,7 +1,7 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {BlogService} from "../services/blog.service";
-import {Subscription} from "rxjs";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {BlogService} from '../services/blog.service';
+import {Subscription} from 'rxjs';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-blog-item-list',
@@ -10,10 +10,15 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class BlogItemListComponent implements OnInit, OnDestroy {
 
+  @Input() filterText: string;
   public blogItemList;
-  public filterText:string;
 
+  @Output() name = new EventEmitter<string>();
   constructor(private rest: BlogService, private router: Router, private route: ActivatedRoute) {
+  }
+
+  sendFilter() {
+    this.name.emit(this.filterText);
   }
 
   ngOnInit() {
@@ -30,9 +35,12 @@ export class BlogItemListComponent implements OnInit, OnDestroy {
     });
   }
 
-  onChange():void {
+  onChange(): void {
     this.router.navigate(['blog'],
-      {queryParams: {title: this.filterText}})
+      {queryParams: {title: this.filterText}});
+  }
+
+  ngOnDestroy(): void {
   }
 
 }
